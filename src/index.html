@@ -4,21 +4,44 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Desafio Caixa Eletrônico</title>
+
 </head>
 <script src="./assets/js/contagemNotas.js"></script>
 <body>
-    <div>
-        jorge
-    </div>
-    <script>
-        contagemDeNotas(163);
-        // contagemDeNotas(163)[0];
-        // contagemDeNotas(163)[1];
-        // contagemDeNotas(163)[2];
-        // contagemDeNotas(163)[3];
-        // contagemDeNotas(163)[4];
-    </script>
+
+    <h1>
+        Caixa Eletrônico
+    </h1>
+    <form action=""> 
+        <div>
+            <label >Valor do Saque</label>
+            <input type="number" name="valorSaque" id="valorSaque"/>
+        </div>
+        <div>
+            <input type="button" value="Enviar" onclick="RealizarContagem();">
+        </div>
+        <div>
+            <label>Notas Retornadas:</label>
+            <p id="notasRetornadas"></p>
+
+        </div>
+        <script>
+            let valorSaque = document.querySelector("#valorSaque");
+            let notasEntregues = document.getElementById("notasRetornadas")
+            let funcaoContagem = contagemDeNotas(valorSaque.value);
+
+            function RealizarContagem() {
+                if(valorSaque.value%1 === 0){
+                    console.log("Notas Devolvidas", funcaoContagem);
+                } else {
+                    alert("Digite Valores Inteiros!")
+                }
+            }
+ 
+        </script>
+    </form>
+
 </body>
 
 
