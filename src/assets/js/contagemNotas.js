@@ -8,6 +8,7 @@ const contagemDeNotas = function(valor) {
         // realiza um for para percorrer o array de notas disponíveis
         for (const nota of notasDisponiveis) {
             let quantNotasEValor = calcularNotas(nota, sobraValor);
+
             quantNotasFinal[nota] = quantNotasEValor.quantNotas;
             sobraValor = quantNotasEValor.valorRestante;
         }
