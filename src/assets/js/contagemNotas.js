@@ -3,7 +3,9 @@ const contagemDeNotas = function(valor) {
     let notasDisponiveis = [100, 50, 10, 5, 1];
     let quantNotasFinal = {};
 
+    // calcula as notas enquanto não zerar o valor total digiado
     while (sobraValor > 0) {
+        // realiza um for para percorrer o array de notas disponíveis
         for (const nota of notasDisponiveis) {
             let quantNotasEValor = calcularNotas(nota, sobraValor);
             quantNotasFinal[nota] = quantNotasEValor.quantNotas;
@@ -11,18 +13,12 @@ const contagemDeNotas = function(valor) {
         }
     }
 
-    console.log("quantidade de notas /n")
-    console.log("Final: ", quantNotasFinal);
-
     return quantNotasFinal;
 };
-
+// função para calcular quantidade de notas e valor restante do total
 function calcularNotas(valorNota, valorSaque){
     let quantNotas = parseInt(valorSaque/valorNota);
     let valorRestante = valorSaque%valorNota;
-
-    console.log("Dentro função",quantNotas);
-    console.log("Dentro função", valorRestante);
     
     return {quantNotas: quantNotas , valorRestante: valorRestante};
 }

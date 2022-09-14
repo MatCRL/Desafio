@@ -4,21 +4,60 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Desafio Caixa Eletrônico</title>
+
 </head>
 <script src="./assets/js/contagemNotas.js"></script>
 <body>
-    <div>
-        jorge
-    </div>
-    <script>
-        contagemDeNotas(163);
-        // contagemDeNotas(163)[0];
-        // contagemDeNotas(163)[1];
-        // contagemDeNotas(163)[2];
-        // contagemDeNotas(163)[3];
-        // contagemDeNotas(163)[4];
-    </script>
+
+    <h1>
+        Caixa Eletrônico
+    </h1>
+    <form action=""> 
+        <div>
+            <label >Valor do Saque</label>
+            <input type="number" name="valorSaque" id="valorSaque"/>
+        </div>
+        <div>
+            <input type="button" id="botaoEnviar" value="Enviar" onclick="RealizarContagem(valorSaque.value);">
+        </div>
+        <div>
+            <label>Notas Retornadas:</label>
+            <p id="notasRetornadas"></p>
+
+        </div>
+        <script>
+            // salva valor digitado
+            let valorSaque = document.querySelector("#valorSaque");
+            //Evita dar reload na quando pressiona Enter
+            document.addEventListener("keypress", function(e) {
+                if(e.key === 'Enter') {
+                    event.preventDefault();
+                }
+            });
+            
+            // função para calcular as notas que devem ser exibidas
+            function RealizarContagem(valor) {
+                //limpar os valores anteriores
+                notasRetornadas.innerHTML = '';
+                // validar se não contém vírgula no número
+                if(valorSaque.value%1 === 0){
+                    // laço para percorrer os valores do objeto
+                    for (const nota in contagemDeNotas(valorSaque.value)) {
+                        if(contagemDeNotas(valor)[nota] > 0){
+                            // printar valores na tela
+                            document.getElementById("notasRetornadas").innerHTML += "Notas de "+nota+": "+contagemDeNotas(valor)[nota]+"<br>";
+                        }
+                    }
+                } else {
+                    // alerta de valor incorreto
+                    alert("Digite Valores Inteiros!")
+                }
+            }
+ 
+        </script>
+    </form>
+
 </body>
 
 
